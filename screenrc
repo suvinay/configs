@@ -1,0 +1,17 @@
+escape \034\034
+defescape \034\034
+startup_message off
+vbell off
+altscreen on
+hardstatus on
+hardstatus alwayslastline "%{-b gk}%-w%{+b WR}%50>%n %t%{-b gk}%+w%< %= %{mk}%l %{ck}%d%{wk}-%{ck}%m %{gk}%c"
+#hardstatus alwayslastline "%{-b gk}%{+b WR}%50>%n %t%{-b gk}%+w%< %= %{mk}%l %{ck}%d%{wk}-%{ck}%m %{gk}%c"
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+term screen-256color-bce
+bind ^- other
+screen -t mixer 0 alsamixer
+screen -t Suvinay 1 
+screen -t Suvinay 2 
+screen -t Suvinay 3 
