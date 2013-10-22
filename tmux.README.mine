@@ -1,0 +1,45 @@
+A) Basic commands
+---------------------------
+1. On the prompt
+tmux new -s session-name
+tmux attach -t session-name
+tmux list-sessions
+tmux switch -t session-name
+tmux detach
+
+2. Once in tmux, Prefix+: allows you to enter a command
+list-sessions
+kill-session
+list-commands
+attach-session [-t target-session]
+rename-session [-t target-session] new-name
+detach-client
+move-window [-d] [-s src] [-d dst]
+swap-window [-d] [-s src] [-d dst]
+
+But in the prompt you can use some of the commands in A1
+
+B) Basic key bindings
+---------------------------
+
+Prefix+c                Create new window
+Prefix+d                Detach current client
+Prefix+<return>         Move to previously selected window
+Prefix+n                Move to next window
+Prefix+p                Move to previous window
+Prefix+x                Kill current window                                                     Prefix+& also does this
+Prefix+w                List all windows
+Prefix+?                Help
+Prefix+f                Find a particular window (search by title)
+Prefix+,                Rename current window
+
+C) Basic pane handling
+---------------------------
+Prefix+|                Split vertical                                                          | => Shift+\
+Prefix+-                Split horizontal
+Prefix+o                Move to next pane 
+Prefix+<Space>          Toggle through different layouts for panes
+Prefix+q                Displays pane numbers --- type the number to move to that pane
+Prefix+:break-pane      Takes the current pane and puts it into new window                      -d switch ensures current window still remains active
+Prefix+> / Prefix+<     Resize vertical split
+Prefix+= / Prefix++     Resize horizontal split
