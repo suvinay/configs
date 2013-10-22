@@ -1,4 +1,4 @@
 configs
 =======
 
-Config files for shell, vim, screen
+Config files for shell, vim, screen, tmux
