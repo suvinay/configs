@@ -15,7 +15,5 @@ alias cl="clear"
 alias lt="ls -lrt"
 alias la="ls -a"
 alias rm="rm -i"
-alias pbcopy='xsel --clipboard --input'     # read contents of std input to clipboard
-alias pbpaste='xsel --clipboard --output'   # requires xsel package
 
 
