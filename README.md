@@ -5,4 +5,4 @@ Config files for shell, vim, screen, tmux.
 
 Each branch corresponds to a different machine.
 
-master branch has what is common across machines
+This is for my lab desktop machine at CSAIL: suvinay-desktop@csail.mit.edu
