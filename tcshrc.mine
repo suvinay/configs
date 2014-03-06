@@ -1,0 +1,41 @@
+setenv PROMPT '%n@%m:%c%#'
+setenv EDITOR vim
+# use vcs-mx
+use cscope
+
+use IC
+use IC 61
+
+use hspice
+use cadence
+use IUS         
+# IUS is for ncverilog and simvision
+
+use MMSIM 72
+
+use synthesis
+
+# use syn F-2011.09-SP1
+# use syn E-2010.12-SP1
+# use vcs-mx F-2011.12
+use vcs-mx G-2012.09
+# use vcs-mx D-2009.12
+# Go to /opt/synopsys to see which versions are available
+#alias vcs   '/fs/cad2/synopsys/vcs-mx/F-2011.12/bin/vcs'
+
+# Aliases -  below are not required with use syn F-2011.09-SP1
+# alias 	dc_shell 	'/fs/cad2/synopsys/syn/F-2011.09-SP1/bin/dc_shell'
+# alias 	dc_shell-t 	'/fs/cad2/synopsys/syn/F-2011.09-SP1/bin/dc_shell-t'
+# alias 	design_vision 	'/fs/cad2/synopsys/syn/F-2011.09-SP1/bin/design_vision'
+# alias 	dc_shell-xg-t 	'/fs/cad2/synopsys/syn/F-2011.09-SP1/bin/dc_shell-xg-t'
+alias   pt_shell    '/fs/cad2/synopsys/pt/E-2010.12-SP1-1/amd64/syn/bin/pt_shell'
+
+# Aliases
+alias 	l 	'ls'
+alias 	v 	'vim'
+alias 	la 	'ls -a'
+alias 	lt 	'ls -lrt'
+alias 	cl 	'clear'
+alias 	rm 	'rm -i'
+
+alias   cd  'chdir'

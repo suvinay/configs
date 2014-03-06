@@ -3,12 +3,12 @@ set number                      " Set line number
 set hlsearch                    " Highlight the search
 set incsearch                   " Incremental search as you type the word
 set smartcase                   " Supposed to search case smartly;no success
-set so=999                      " Cursor remains in middle of screen 
 set wrapmargin=5
-set textwidth=80                " Number of characters per row
 set showmatch                   " Show matching paranthesis
 set autoread                    " Automatically read file changed on disk
 set pastetoggle=<F2>            " Set paste/nopaste when pasting
+set textwidth=80                " Number of characters per row
+set fo-=t                       " Default, don't set textwidth
 
 
 " **************************************************************************** "
@@ -39,8 +39,8 @@ set shiftwidth=4                " number of spaces to use for auto indent
 " added new, does the above over ride the below?
 " configure expanding of tabs for various file types
 au BufRead,BufNewFile *.py set expandtab
-" au BufRead,BufNewFile *.c* set noexpandtab
-" au BufRead,BufNewFile *.h set noexpandtab
+au BufRead,BufNewFile *.c* set noexpandtab
+au BufRead,BufNewFile *.h set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 
 
@@ -49,14 +49,14 @@ au BufRead,BufNewFile Makefile* set noexpandtab
 " **************************************************************************** "
 syntax enable
 filetype on
-au BufNewFile,BufRead *.vl,*.vhd set filetype=verilog
+au BufNewFile,BufRead *.vh,*.vl,*.vhd set filetype=verilog
 
 
 " **************************************************************************** "
 " Cursor line (highlights the current row/column)
 " **************************************************************************** "
 set cursorline
-hi CursorLine ctermbg=black cterm=none
+hi CursorLine ctermbg=52 cterm=none
 " set cursorcolumn
 " hi CursorColumn ctermbg=black cterm=none
 " hi CursorLine term=bold cterm=bold ctermbg=darkblue
@@ -89,11 +89,28 @@ call pathogen#runtime_append_all_bundles()
 " **************************************************************************** "
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-" The leader key is by default the \ key. So you can edit and reload vimrc by 
+" The leader key is by default the \ key. So you can edit and reload vimrc by
 " hitting \ev and \sv respectively
 " let mapleader=","
 
 " Set the status line
 " set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
-" highlight Cursor guifg=blue guibg=black
+
+" **************************************************************************** "
+" Highlight characters beyond textwidth (useful when auto text wrapping is off)
+" **************************************************************************** "
+" augroup vimrc_autocmds
+"   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+"   autocmd BufEnter * match OverLength /\%80v.*/
+" augroup END
+
+
+" **************************************************************************** "
+" Allow mouse scrolling in vim
+" **************************************************************************** "
+" set mouse=a
+:map <ScrollWheelUp> k
+:map <ScrollWheelDown> j
+:map <S-ScrollWheelUp> k
+:map <S-ScrollWheelDown> j
