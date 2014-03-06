@@ -117,3 +117,26 @@ alias l='ls -CF'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+# For tools - gem5 etc.
+source /afs/csail/group/lsp/tools/setup_tools.sh
+
+# zsim
+export PYTHONPATH=/data/sanchez/tools/pymodules/lib/python2.7/site-packages:$PYTHONPATH
+
+ZSIMDEPSROOT=/data/sanchez/benchmarks/zsim-deps
+export PINPATH=$ZSIMDEPSROOT/pin/
+export LIBCONFIGPATH=$ZSIMDEPSROOT/libconfig-1.4.8/inst/
+export POLARSSLPATH=$ZSIMDEPSROOT/polarssl-1.1.4/
+export DRAMSIMPATH=$ZSIMDEPSROOT/DRAMSim2/
+export ZSIMAPPSPATH=/data/sanchez/benchmarks/zsim-apps/
+
+# Gurobi
+export TOOLS_HOME=/data/sanchez/tools
+export GUROBI_HOME=$TOOLS_HOME/gurobi/gurobi550/linux64
+export PATH=$PATH:$GUROBI_HOME/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib
+export GRB_LICENSE_FILE=$TOOLS_HOME/gurobi/licenses/$USER/$HOSTNAME.lic
+
+# For 6.836
+HW_DIR=/afs/csail.mit.edu/proj/courses/6.816/student-repos/spring14/homeworks
