@@ -43,3 +43,4 @@ Prefix+q                Displays pane numbers --- type the number to move to tha
 Prefix+:break-pane      Takes the current pane and puts it into new window                      -d switch ensures current window still remains active
 Prefix+> / Prefix+<     Resize vertical split
 Prefix+= / Prefix++     Resize horizontal split
+Prefix+x                Close this pane (not window, just the pane)
