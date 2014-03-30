@@ -83,6 +83,11 @@ nnoremap <F4> :let &scrolloff=999-&scrolloff<CR>
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
+" **************************************************************************** "
+" Quickly edit/reload the vimrc file
+" **************************************************************************** "
+cnoremap sudow w !sudo tee % > /dev/null
+
 
 " **************************************************************************** "
 " Quickly edit/reload the vimrc file
@@ -97,3 +102,4 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
 " highlight Cursor guifg=blue guibg=black
+
