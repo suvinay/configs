@@ -65,6 +65,7 @@ WHITE="\[\e[0;37m\]"
 LIGHT_WHITE="\[\e[1;37m\]"
 NO_COLOUR="\[\e[0m\]"
 
+source ~/.git-prompt.sh
 
 
 if [ "$color_prompt" = yes ]; then
