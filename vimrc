@@ -9,6 +9,9 @@ set textwidth=80                " Number of characters per row
 set showmatch                   " Show matching paranthesis
 set autoread                    " Automatically read file changed on disk
 set pastetoggle=<F2>            " Set paste/nopaste when pasting
+set fo-=t                       " By default, don't enable auto text wrapping 
+                                " ie. don't break line at *textwidth* chars
+                                " I highlight characters beyond 80 chars below
 
 
 " **************************************************************************** "
@@ -39,8 +42,8 @@ set shiftwidth=4                " number of spaces to use for auto indent
 " added new, does the above over ride the below?
 " configure expanding of tabs for various file types
 au BufRead,BufNewFile *.py set expandtab
-" au BufRead,BufNewFile *.c* set noexpandtab
-" au BufRead,BufNewFile *.h set noexpandtab
+au BufRead,BufNewFile *.c* set noexpandtab
+au BufRead,BufNewFile *.h set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 
 
@@ -73,8 +76,6 @@ hi CursorLine ctermbg=black cterm=none
 
 " Remove highlighted search by hitting F3
 nnoremap <F3> :noh<CR>                
-" Toggle cursor to middle of screen and default behavior by hitting F4
-nnoremap <F4> :let &scrolloff=999-&scrolloff<CR>
 
 " **************************************************************************** "
 " Use pathogen to easily modify the runtime path to include all
@@ -96,4 +97,11 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " Set the status line
 " set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
-" highlight Cursor guifg=blue guibg=black
+" **************************************************************************** "
+" Highlight characters beyond 80 columns
+" **************************************************************************** "
+" augroup vimrc_autocmds
+"   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+"   autocmd BufEnter * match OverLength /\%80v.*/
+" augroup END
+
