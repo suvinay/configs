@@ -69,10 +69,12 @@ NO_COLOUR="\[\e[0m\]"
 
 if [ "$color_prompt" = yes ]; then
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-	PS1="${LIGHT_GREEN}\u@$HOSTNAME${WHITE}:${LIGHT_BLUE}\W${LIGHT_WHITE}$ ${LIGHT_WHITE}"
+#	PS1="${LIGHT_GREEN}\u@$HOSTNAME${WHITE}:${LIGHT_BLUE}\W${LIGHT_WHITE}$ ${LIGHT_WHITE}"
+	PS1="${LIGHT_GREEN}\u@$(scutil --get ComputerName)${WHITE}:${LIGHT_BLUE}\W${LIGHT_WHITE}$ ${LIGHT_WHITE}"
 else
 #    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-	PS1="${LIGHT_GREEN}\u@$HOSTNAME${WHITE}:${LIGHT_BLUE}\W${LIGHT_WHITE}$ ${WHITE}"
+#	PS1="${LIGHT_GREEN}\u@$HOSTNAME${WHITE}:${LIGHT_BLUE}\W${LIGHT_WHITE}$ ${WHITE}"
+	PS1="${LIGHT_GREEN}\u@$(scutil --get ComputerName)${WHITE}:${LIGHT_BLUE}\W${LIGHT_WHITE}$ ${WHITE}"
 fi
 unset color_prompt force_color_prompt
 
@@ -107,6 +109,7 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
@@ -117,3 +120,6 @@ alias l='ls -CF'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+export SVN_EDITOR=vim
+export PATH=$PATH:$HOME/bin
