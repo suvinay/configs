@@ -21,6 +21,7 @@ alias la="ls -a"
 alias rm="rm -i"
 alias pbcopy='xsel --clipboard --input'     # read contents of std input to clipboard
 alias pbpaste='xsel --clipboard --output'   # requires xsel package
+alias ipconfig='nmcli dev list iface eth0 | grep IP4'
 
 # Network
 alias hermes="ssh -X suvinay@hermes1.csail.mit.edu"
