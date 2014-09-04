@@ -5,7 +5,8 @@ alias start_afs="kinit suvinay && klist ; aklog && tokens"
 # Misc commands
 alias update="su -c \"apt-get update;apt-get upgrade\""
 alias ifconfig="/sbin/ifconfig"
-alias move_right="gconftool-2 --set /apps/metacity/general/button_layout --type string :minimize,maximize,close"
+#alias move_right="gconftool-2 --set /apps/metacity/general/button_layout --type string :minimize,maximize,close"
+alias move_right="gsettings set org.gnome.desktop.wm.preferences button-layout 'menu:minimize,maximize,close'"
 alias switch_gcc="sudo update-alternatives --config gcc"
 
 # Editors
@@ -25,6 +26,7 @@ alias ipconfig='nmcli dev list iface eth0 | grep IP4'
 
 # Network
 alias hermes="ssh -X suvinay@hermes1.csail.mit.edu"
+alias mad="ssh -X suvinay@mad6.csail.mit.edu"
 alias vlsifarm="ssh -X suvinay@vlsifarm-01.mit.edu"
 alias eros="ssh -X eros-mtl1.mit.edu"
 alias csailhome="cd /afs/csail.mit.edu/u/s/suvinay/"
