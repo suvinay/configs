@@ -3,12 +3,22 @@ set number                      " Set line number
 set hlsearch                    " Highlight the search
 set incsearch                   " Incremental search as you type the word
 set smartcase                   " Supposed to search case smartly;no success
-set so=999                      " Cursor remains in middle of screen 
+set so=999                      " Cursor remains in middle of screen (999). 
+                                " In general, value specifies number of lines of 
+                                " context around current line being edited.
 set wrapmargin=5
-set textwidth=80                " Number of characters per row
+"set textwidth=80                " Number of characters per row
 set showmatch                   " Show matching paranthesis
 set autoread                    " Automatically read file changed on disk
 set pastetoggle=<F2>            " Set paste/nopaste when pasting
+
+
+" **************************************************************************** "
+" Keep cursor near the top of the screen
+" Use zz for center, zb for bottom
+" **************************************************************************** "
+" nnoremap j jzt                  
+" nnoremap k kzt
 
 
 " **************************************************************************** "
@@ -73,8 +83,10 @@ hi CursorLine ctermbg=black cterm=none
 
 " Remove highlighted search by hitting F3
 nnoremap <F3> :noh<CR>                
+" Toggle line number by hitting F4
+nnoremap <F4> :set nonumber!<CR>
 " Toggle cursor to middle of screen and default behavior by hitting F4
-nnoremap <F4> :let &scrolloff=999-&scrolloff<CR>
+nnoremap <F5> :let &scrolloff=999-&scrolloff<CR>
 
 " **************************************************************************** "
 " Use pathogen to easily modify the runtime path to include all
@@ -97,3 +109,17 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
 " highlight Cursor guifg=blue guibg=black
+
+" **************************************************************************** "
+" clang format integration 
+" **************************************************************************** "
+map <C-k> :pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py<CR>
+imap <C-k> <ESC>:pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py<CR>i
+
+function ClangFormatFile()
+        let l:lines="all"
+        pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py
+endfunction
+
+map <C-l> :call ClangFormatFile()<CR>
+imap <C-l> <ESC>:call ClangFormatFile()<CR>i
