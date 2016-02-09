@@ -111,6 +111,9 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+# For kerberos credentials
+export KRB5CCNAME=~/.krbcc/MyOwn
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -119,17 +122,27 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # For tools - gem5 etc.
-source /afs/csail/group/lsp/tools/setup_tools.sh
+# source /afs/csail/group/lsp/tools/setup_tools.sh
 
 # zsim
 export PYTHONPATH=/data/sanchez/tools/pymodules/lib/python2.7/site-packages:$PYTHONPATH
 
 ZSIMDEPSROOT=/data/sanchez/benchmarks/zsim-deps
-export PINPATH=$ZSIMDEPSROOT/pin/
-export LIBCONFIGPATH=$ZSIMDEPSROOT/libconfig-1.4.8/inst/
+#export PINPATH=$ZSIMDEPSROOT/pin/
+export LIBCONFIGPATH=$ZSIMDEPSROOT/libconfig-1.4.9/inst/
 export POLARSSLPATH=$ZSIMDEPSROOT/polarssl-1.1.4/
 export DRAMSIMPATH=$ZSIMDEPSROOT/DRAMSim2/
 export ZSIMAPPSPATH=/data/sanchez/benchmarks/zsim-apps/
+
+# For Ordspec
+export PINPATH=$ZSIMDEPSROOT/pin-2.14-71313-gcc.4.4.7-linux
+export PIN_HOME=$PINPATH
+export PIN_ROOT=${PIN_HOME}
+export PIN_KIT=${PIN_HOME}
+export PATH=${PATH}:${PIN_HOME}
+export GALOIS_DO_NOT_BIND_MAIN_THREAD=1
+export ZSIMARMADILLOPATH=$ZSIMDEPSROOT/armadillo/
+export PATH=$PATH:/data/sanchez/tools/llvm-3.7.1/bin
 
 # Gurobi
 export TOOLS_HOME=/data/sanchez/tools
@@ -140,3 +153,35 @@ export GRB_LICENSE_FILE=$TOOLS_HOME/gurobi/licenses/$USER/$HOSTNAME.lic
 
 # For 6.836
 HW_DIR=/afs/csail.mit.edu/proj/courses/6.816/student-repos/spring14/homeworks
+
+# For 6.886 Spring'15 [[ Performance Engineering for Advanced Multicore Applications ]]
+export KYOTOLIBPATH=/afs/csail.mit.edu/u/s/suvinay/pkg/kyoto-lib/lib
+export KYOTOBINPATH=/afs/csail.mit.edu/u/s/suvinay/pkg/kyoto-lib/bin
+export PATH=${PATH}:${KYOTOBINPATH}
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${KYOTOLIBPATH}
+
+# For bitbucket ssh-agent
+SSH_ENV=$HOME/.ssh/environment
+   
+# start the ssh-agent
+function start_agent {
+    echo "Initializing new SSH agent..."
+    # spawn ssh-agent
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+}
+   
+if [ -f "${SSH_ENV}" ]; then
+     . "${SSH_ENV}" > /dev/null
+     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+
+### For ordspec-benchmarks competition runtime
+source /data/sanchez/tools/parallel_studio_xe_2015/composer_xe_2015.2.164/bin/compilervars.sh intel64
