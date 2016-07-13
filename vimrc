@@ -66,6 +66,7 @@ autocmd FileType c,cpp,java,python autocmd BufWritePre <buffer> :%s/\s\+$//e
 syntax enable
 filetype on
 au BufNewFile,BufRead *.vl,*.vhd set filetype=verilog
+au BufNewFile,BufRead *.m set filetype=murphi " matlab files can also be .m, so careful
 
 
 " **************************************************************************** "
