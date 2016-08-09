@@ -1,5 +1,6 @@
 set background=dark             " Set background
 set number                      " Set line number
+set relativenumber              " Setup relative numbering
 set hlsearch                    " Highlight the search
 set incsearch                   " Incremental search as you type the word
 set smartcase                   " Supposed to search case smartly;no success
