@@ -1,4 +1,6 @@
 # Mount devices / file systems
+# If using oh-my-zsh: put in $ZSH_FOLDER/custom/aliases.zsh
+# If using bash: put i n $HOME/.bash_aliases
 
 # Misc commands
 alias update="su -c \"apt-get update;apt-get upgrade\""
