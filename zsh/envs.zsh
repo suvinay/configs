@@ -8,7 +8,7 @@ export POLARSSLPATH=$ZSIMDEPSROOT/polarssl-1.1.4/
 export DRAMSIMPATH=$ZSIMDEPSROOT/DRAMSim2/
 export ZSIMAPPSPATH=/data/sanchez/benchmarks/zsim-apps/
 
-# For Ordspec
+# For Ordspecsim
 export PINPATH=$ZSIMDEPSROOT/pin-2.14-71313-gcc.4.4.7-linux
 export PIN_HOME=$PINPATH
 export PIN_ROOT=${PIN_HOME}
@@ -30,3 +30,14 @@ export GRB_LICENSE_FILE=$TOOLS_HOME/gurobi/licenses/$USER/$HOSTNAME.lic
 
 # For ordspec-benchmarks competition runtime
 source /data/sanchez/tools/parallel_studio_xe_2015/composer_xe_2015.2.164/bin/compilervars.sh intel64
+
+# Paths to folders
+export ORDSIM=$HOME/research/projects/ordtm/ordspecsim/
+export ORDBENCH=$HOME/research/projects/ordtm/ordspec-benchmarks/
+export ORDSCRIPTS=$HOME/research/projects/ordtm/ordspec-scripts/
+export OSSTEMP=$HOME/temp/ordspecsim/
+export PLSAPPS=/data/sanchez/benchmarks/pls-apps/
+export RESULTS=/data/sanchez/results/suvinay/
+
+# Local PATH vars
+export PATH=$HOME/bin:$PATH
