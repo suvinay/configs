@@ -1,4 +1,7 @@
 # Mount devices / file systems
+# If using oh-my-zsh: put in $ZSH_FOLDER/custom/aliases.zsh
+# If using bash: put i n $HOME/.bash_aliases
+# Mount devices / file systems
 alias os="cd /media/74B881C2B881837A/"
 alias start_afs="kinit suvinay && klist ; aklog && tokens"
 
