@@ -1,6 +1,6 @@
 set background=dark             " Set background
 set number                      " Set line number
-set relativenumber              " Setup relative numbering
+set relativenumber
 set hlsearch                    " Highlight the search
 set incsearch                   " Incremental search as you type the word
 set smartcase                   " Supposed to search case smartly;no success
@@ -12,6 +12,13 @@ set wrapmargin=5
 set showmatch                   " Show matching paranthesis
 set autoread                    " Automatically read file changed on disk
 set pastetoggle=<F2>            " Set paste/nopaste when pasting
+
+" **************************************************************************** "
+" Spell check for latex
+" **************************************************************************** "
+autocmd! BufRead,BufNewFile *.tex setlocal spell
+hi clear SpellBad
+hi SpellBad term=bold ctermbg=57 ctermfg=147
 
 
 " **************************************************************************** "
