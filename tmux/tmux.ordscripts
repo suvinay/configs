@@ -1,6 +1,6 @@
 #!/bin/zsh
 # 1. Create a new session with desired name
-tmux -q -f ~/.tmux.ordscripts.conf new-session -s pls-scripts -d 
+tmux -q attach -t pls-scripts || tmux -q -f ~/.tmux.ordscripts.conf new-session -s pls-scripts -d 
 # 2. Change the default path (this took me so long to get right).
 #    Other options like default-path, -c don't work
 #    either here, or with new-window. Who knows why?
