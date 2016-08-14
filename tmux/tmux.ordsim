@@ -1,25 +1,32 @@
-#!/bin/zsh
-# 1. Create a new session with desired name
-tmux -q attach -t ordspecsim || tmux -q -f ~/.tmux.ordsim.conf new-session -s ordspecsim -d 
-# 2. Change the default path (this took me so long to get right).
-#    Other options like default-path, -c don't work
-#    either here, or with new-window. Who knows why?
-#    In any case, default-path is defunct since tmux v1.9, so
-#    this was probably for the best.
-tmux -q set-option -g default-command "[ -z \"\${ORDSIM+set}\" ] || { cd \"\${ORDSIM}/sim\"; unset ORDSIM; }; exec ${SHELL}"
-# 3. Create your windows, invoking default-command everytime you
-#    you want to change the directory
-tmux -q new-window -t ordspecsim -n sim
-tmux -q new-window -t ordspecsim -n sim
-tmux -q set-option -g default-command "[ -z \"\${ORDSIM+set}\" ] || { cd \"\${ORDSIM}\"; unset ORDSIM; }; exec ${SHELL}"
-tmux -q new-window -t ordspecsim -n misc
-# 4. Reset the default command to default so you don't mess with
-#    the global options. Another weirdness: I had to use the 
-#    global option to get it to work.
-tmux -q set-option -g default-command ""
-# 5. Rename the very first window if desired. This command
-#    does not take a session-name argument. The default 
-#    behavior is to operate on the last detached session.
-tmux -q rename-window -t 0 run
-# 6. Finally re-attach the session we just created. Voila!
-tmux -q attach-session -t ordspecsim
+#!/usr/bin/zsh
+# 1. Check if session already exists
+tmux -q has-session -t ordspecsim
+if [ $? != 0 ]
+then
+    # 2. Create a new session with desired name
+    tmux -q attach -t ordspecsim -d || tmux -q -f ~/.tmux.ordsim.conf new-session -s ordspecsim -d 
+    # 3. Change the default path (this took me so long to get right).
+    #    Other options like default-path, -c don't work
+    #    either here, or with new-window. Who knows why?
+    #    In any case, default-path is defunct since tmux v1.9, so
+    #    this was probably for the best.
+    tmux -q set-option -g default-command "[ -z \"\${ORDSIM+set}\" ] || { cd \"\${ORDSIM}/sim\"; unset ORDSIM; }; exec ${SHELL}"
+    # 4. Create your windows, invoking default-command everytime you
+    #    you want to change the directory
+    tmux -q new-window -t ordspecsim -n sim
+    tmux -q new-window -t ordspecsim -n sim
+    tmux -q set-option -g default-command "[ -z \"\${ORDSIM+set}\" ] || { cd \"\${ORDSIM}\"; unset ORDSIM; }; exec ${SHELL}"
+    tmux -q new-window -t ordspecsim -n misc
+    # 5. Reset the default command to default so you don't mess with
+    #    the global options. Another weirdness: I had to use the 
+    #    global option to get it to work.
+    tmux -q set-option -g default-command ""
+    # 6. Rename the very first window if desired. This command
+    #    does not take a session-name argument. The default 
+    #    behavior is to operate on the last detached session.
+    tmux -q rename-window -t 0 run
+    # 7. Finally re-attach the session we just created. Voila!
+    tmux -q attach-session -t ordspecsim
+else
+    tmux attach -d -t ordspecsim
+fi
