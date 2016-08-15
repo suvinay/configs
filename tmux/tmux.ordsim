@@ -4,7 +4,7 @@ tmux -q has-session -t ordspecsim
 if [ $? != 0 ]
 then
     # 2. Create a new session with desired name
-    tmux -q attach -t ordspecsim -d || tmux -q -f ~/.tmux.ordsim.conf new-session -s ordspecsim -d 
+    tmux -q -f ~/.tmux.ordsim.conf new-session -s ordspecsim -d
     # 3. Change the default path (this took me so long to get right).
     #    Other options like default-path, -c don't work
     #    either here, or with new-window. Who knows why?
