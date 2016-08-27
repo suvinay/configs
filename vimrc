@@ -1,5 +1,6 @@
 set background=dark             " Set background
 set number                      " Set line number
+set relativenumber              " Set relative numbering
 set hlsearch                    " Highlight the search
 set incsearch                   " Incremental search as you type the word
 set smartcase                   " Supposed to search case smartly;no success
@@ -81,6 +82,8 @@ hi CursorLine ctermbg=black cterm=none
 nnoremap <F3> :noh<CR>                
 " Toggle cursor to middle of screen and default behavior by hitting F4
 nnoremap <F4> :let &scrolloff=999-&scrolloff<CR>
+" Toggle line number by hitting ;;
+nnoremap ;; :set number! \| :set relativenumber!<CR>
 
 " **************************************************************************** "
 " Use pathogen to easily modify the runtime path to include all
