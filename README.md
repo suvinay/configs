@@ -2,7 +2,4 @@ configs
 =======
 
 Config files for shell, vim, screen, tmux.
-
-Each branch corresponds to a different machine.
-
-This is for hermes machines
+This is for CSAIL machines -- hermes, mad, z etc.
