@@ -8,10 +8,17 @@ set so=999                      " Cursor remains in middle of screen (999).
                                 " In general, value specifies number of lines of 
                                 " context around current line being edited.
 set wrapmargin=5
-"set textwidth=80                " Number of characters per row
 set showmatch                   " Show matching paranthesis
 set autoread                    " Automatically read file changed on disk
 set pastetoggle=<F2>            " Set paste/nopaste when pasting
+
+" **************************************************************************** "
+" Textwidth options
+" **************************************************************************** "
+set textwidth=80                " Number of characters per row
+" Set different textwidth for git commit messages
+au FileType gitcommit setlocal tw=50
+
 
 " **************************************************************************** "
 " Spell check for latex
@@ -75,6 +82,7 @@ syntax enable
 filetype on
 au BufNewFile,BufRead *.vl,*.vhd set filetype=verilog
 au BufNewFile,BufRead *.m set filetype=murphi " matlab files can also be .m, so careful
+au BufNewFile,BufRead SCons* set filetype=scons
 
 
 " **************************************************************************** "
