@@ -26,6 +26,7 @@ alias find_deadlock='find ./ -name cerr.log.bz2 | xargs bzgrep "Deadlock"'
 alias find_cycles='find ./ -name sim.out.bz2 | xargs bzgrep "Simulated cycles"'
 alias run_tests='./tests/run_all.py -d ./build/opt/tests/'
 alias run_sweep_tests='./build/opt/tests/run.py -c configs/*.cfg --workers 8'
+alias sort_cycles="find ./ -name sim.out.bz2 | xargs bzgrep 'Simulated cycles' | sed -rn 's/.*-([0-9]+)c-.*: ([0-9]+) # Simulated cycles/\\1c \\2/p' | sort -k 1n | awk  '{ printf \"%s %.6f M cycles\\n\", \$1, \$2/=1000000}'"
 
 # TEMP
 alias 6823='cd /afs/csail/group/csg/www/data/6.823'
@@ -35,4 +36,5 @@ alias 6823_athena='cd /afs/athena.mit.edu/course/6/6.823'
 alias zshrc='$EDITOR ~/.zshrc'
 alias vimrc='$EDITOR ~/.vimrc'
 alias bashrc='$EDITOR ~/.bashrc'
-alias aliases='$EDITOR ~/.oh-my-zsh/custom/aliases'
+alias aliases='$EDITOR ~/.oh-my-zsh/custom/aliases.zsh'
+alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
