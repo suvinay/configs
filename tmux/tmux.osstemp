@@ -1,0 +1,32 @@
+#!/usr/bin/zsh
+# 1. Check if session already exists
+tmux -q has-session -t oss-temp
+if [ $? != 0 ]
+then
+    # 2. Create a new session with desired name
+    tmux -q -f ~/.tmux.osstemp.conf new-session -s oss-temp -d 
+    # 3. Change the default path (this took me so long to get right).
+    #    Other options like default-path, -c don't work
+    #    either here, or with new-window. Who knows why?
+    #    In any case, default-path is defunct since tmux v1.9, so
+    #    this was probably for the best.
+    tmux -q set-option -g default-command "[ -z \"\${OSSTEMP+set}\" ] || { cd \"\${OSSTEMP}/sim\"; unset OSSTEMP; }; exec ${SHELL}"
+    # 4. Create your windows, invoking default-command everytime you
+    #    you want to change the directory
+    tmux -q new-window -t oss-temp -n osstemp
+    tmux -q new-window -t oss-temp -n osstemp
+    tmux -q set-option -g default-command "[ -z \"\${OSSTEMP+set}\" ] || { cd \"\${OSSTEMP}\"; unset OSSTEMP; }; exec ${SHELL}"
+    tmux -q new-window -t oss-temp -n osstemp "htop"
+    # 5. Reset the default command to default so you don't mess with
+    #    the global options. Another weirdness: I had to use the 
+    #    global option to get it to work.
+    tmux -q set-option -g default-command ""
+    # 6. Rename the very first window if desired. This command
+    #    does not take a session-name argument. The default 
+    #    behavior is to operate on the last detached session.
+    tmux -q rename-window -t 0 osstemp
+    # 7. Finally re-attach the session we just created. Voila!
+    tmux -q attach-session -t oss-temp
+else
+    tmux attach -d -t oss-temp
+fi

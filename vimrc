@@ -1,17 +1,42 @@
 set background=dark             " Set background
-set number                      " Set line number
+set number                      " Show line number
+set relativenumber              " Set relative line numbering
 set hlsearch                    " Highlight the search
 set incsearch                   " Incremental search as you type the word
 set smartcase                   " Supposed to search case smartly;no success
-set so=999                      " Cursor remains in middle of screen 
+set so=999                      " Cursor remains in middle of screen (999). 
+                                " In general, value specifies number of lines of 
+                                " context around current line being edited.
 set wrapmargin=5
-set textwidth=80                " Number of characters per row
 set showmatch                   " Show matching paranthesis
 set autoread                    " Automatically read file changed on disk
 set pastetoggle=<F2>            " Set paste/nopaste when pasting
 set fo-=t                       " By default, don't enable auto text wrapping 
                                 " ie. don't break line at *textwidth* chars
                                 " I highlight characters beyond 80 chars below
+
+" **************************************************************************** "
+" Textwidth options
+" **************************************************************************** "
+set textwidth=80                " Number of characters per row
+" Set different textwidth for git commit messages
+au FileType gitcommit setlocal tw=50
+
+
+" **************************************************************************** "
+" Spell check for latex
+" **************************************************************************** "
+autocmd! BufRead,BufNewFile *.tex setlocal spell
+hi clear SpellBad
+hi SpellBad term=bold ctermbg=57 ctermfg=147
+
+
+" **************************************************************************** "
+" Keep cursor near the top of the screen
+" Use zz for center, zb for bottom
+" **************************************************************************** "
+" nnoremap j jzt                  
+" nnoremap k kzt
 
 
 " **************************************************************************** "
@@ -48,11 +73,19 @@ au BufRead,BufNewFile Makefile* set noexpandtab
 
 
 " **************************************************************************** "
+" No trailing spaces 
+" **************************************************************************** "
+autocmd FileType c,cpp,java,python autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+
+" **************************************************************************** "
 " Syntax highlighting
 " **************************************************************************** "
 syntax enable
 filetype on
 au BufNewFile,BufRead *.vl,*.vhd set filetype=verilog
+au BufNewFile,BufRead *.m set filetype=murphi " matlab files can also be .m, so careful
+au BufNewFile,BufRead SCons* set filetype=scons
 
 
 " **************************************************************************** "
@@ -76,6 +109,10 @@ hi CursorLine ctermbg=black cterm=none
 
 " Remove highlighted search by hitting F3
 nnoremap <F3> :noh<CR>                
+" Toggle cursor to middle of screen and default behavior by hitting F5
+nnoremap <F5> :let &scrolloff=999-&scrolloff<CR>
+" Toggle line number by hitting ;;
+nnoremap ;; :set number! \| :set relativenumber!<CR>
 
 " **************************************************************************** "
 " Use pathogen to easily modify the runtime path to include all
@@ -104,4 +141,5 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 "   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
 "   autocmd BufEnter * match OverLength /\%80v.*/
 " augroup END
+
 
