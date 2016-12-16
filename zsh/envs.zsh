@@ -9,3 +9,8 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+# For python virtualenv
+export PATH=/usr/local/bin:$PATH
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
