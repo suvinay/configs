@@ -32,9 +32,9 @@ export GRB_LICENSE_FILE=$TOOLS_HOME/gurobi/licenses/$USER/$HOSTNAME.lic
 source /data/sanchez/tools/parallel_studio_xe_2015/composer_xe_2015.2.164/bin/compilervars.sh intel64
 
 # Paths to folders
-export ORDSIM=$HOME/research/projects/ordtm/ordspecsim/
-export ORDBENCH=$HOME/research/projects/ordtm/ordspec-benchmarks/
-export ORDSCRIPTS=$HOME/research/projects/ordtm/ordspec-scripts/
+export ORDSIM=$HOME/projects/ordspecsim/
+export ORDBENCH=$HOME/projects/ordspec-benchmarks/
+export ORDSCRIPTS=$HOME/projects/ordspec-scripts/
 export OSSTEMP=$HOME/temp/ordspecsim/
 export PLSAPPS=/data/sanchez/benchmarks/pls-apps/
 export RESULTS=/data/sanchez/results/suvinay/
