@@ -14,3 +14,7 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export PATH=/usr/local/bin:$PATH
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+export PIP_REQUIRE_VIRTUALENV=true  # Require virtualenv whenever using pip
+gpip(){                             # ... unless forced to install global
+   PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
