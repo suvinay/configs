@@ -18,3 +18,5 @@ export PIP_REQUIRE_VIRTUALENV=true  # Require virtualenv whenever using pip
 gpip(){                             # ... unless forced to install global
    PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
+# gpip install --upgrade pip setuptools wheel virtualenv
+# Thanks: https://hackercodex.com/guide/python-development-environment-on-mac-osx/
