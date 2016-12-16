@@ -11,9 +11,6 @@ set wrapmargin=5
 set showmatch                   " Show matching paranthesis
 set autoread                    " Automatically read file changed on disk
 set pastetoggle=<F2>            " Set paste/nopaste when pasting
-set fo-=t                       " By default, don't enable auto text wrapping 
-                                " ie. don't break line at *textwidth* chars
-                                " I highlight characters beyond 80 chars below
 
 " **************************************************************************** "
 " Textwidth options
@@ -67,8 +64,8 @@ set shiftwidth=4                " number of spaces to use for auto indent
 " added new, does the above over ride the below?
 " configure expanding of tabs for various file types
 au BufRead,BufNewFile *.py set expandtab
-au BufRead,BufNewFile *.c* set noexpandtab
-au BufRead,BufNewFile *.h set noexpandtab
+" au BufRead,BufNewFile *.c* set noexpandtab
+" au BufRead,BufNewFile *.h set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 
 
@@ -118,8 +115,8 @@ nnoremap ;; :set number! \| :set relativenumber!<CR>
 " Use pathogen to easily modify the runtime path to include all
 " plugins under the ~/.vim/bundle directory
 " **************************************************************************** "
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()
 
 
 " **************************************************************************** "
@@ -134,12 +131,18 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " Set the status line
 " set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
-" **************************************************************************** "
-" Highlight characters beyond 80 columns
-" **************************************************************************** "
-" augroup vimrc_autocmds
-"   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-"   autocmd BufEnter * match OverLength /\%80v.*/
-" augroup END
+" highlight Cursor guifg=blue guibg=black
 
-
+" **************************************************************************** "
+" clang format integration 
+" **************************************************************************** "
+" map <C-k> :pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py<CR>
+" imap <C-k> <ESC>:pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py<CR>i
+" 
+" function ClangFormatFile()
+"         let l:lines="all"
+"         pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py
+" endfunction
+" 
+" map <C-l> :call ClangFormatFile()<CR>
+" imap <C-l> <ESC>:call ClangFormatFile()<CR>i
