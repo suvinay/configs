@@ -20,3 +20,6 @@ gpip(){                             # ... unless forced to install global
 }
 # gpip install --upgrade pip setuptools wheel virtualenv
 # Thanks: https://hackercodex.com/guide/python-development-environment-on-mac-osx/
+
+# For Postgresql
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
