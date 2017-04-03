@@ -16,5 +16,8 @@
     graph = log --oneline --decorate --graph --all
     who = shortlog -s --
     local = log origin/master..HEAD
+    untracked = ls-files --others --exclude-standard
+    sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+    sapply = "!f() { git stash apply stash^{/$*}; }; f"
 [color]
 	ui = true
