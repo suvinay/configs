@@ -4,7 +4,7 @@
 	safecrlf = true
 [user]
 	name = Suvinay Subramanian
-	email = suvinay@csail.mit.edu
+	email = suvinay@google.com
 [alias]
     co = checkout
     ci = commit

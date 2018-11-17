@@ -89,7 +89,7 @@ au BufNewFile,BufRead SCons* set filetype=scons
 " Cursor line (highlights the current row/column)
 " **************************************************************************** "
 set cursorline
-hi CursorLine ctermbg=black cterm=none
+hi CursorLine ctermbg=240 cterm=none
 " set cursorcolumn
 " hi CursorColumn ctermbg=black cterm=none
 " hi CursorLine term=bold cterm=bold ctermbg=darkblue
@@ -116,7 +116,7 @@ nnoremap ;; :set number! \| :set relativenumber!<CR>
 " plugins under the ~/.vim/bundle directory
 " **************************************************************************** "
 call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 
 
 " **************************************************************************** "
