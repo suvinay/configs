@@ -1,3 +1,12 @@
+" **************************************************************************** "
+" Google specific options
+" **************************************************************************** "
+set nocompatible
+source /usr/share/vim/google/google.vim
+
+" **************************************************************************** "
+" General options
+" **************************************************************************** "
 set background=dark             " Set background
 set number                      " Show line number
 set relativenumber              " Set relative line numbering
