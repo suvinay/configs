@@ -3,8 +3,8 @@
 	autocrlf = false
 	safecrlf = true
 [user]
-	name = Suvinay Subramanian
-	email = suvinay@csail.mit.edu
+	name = Rohan Paul
+	email = rohan.cosmos@gmail.com
 [alias]
     co = checkout
     ci = commit
