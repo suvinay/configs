@@ -80,10 +80,6 @@ autocmd FileType c,cpp,java,python autocmd BufWritePre <buffer> :%s/\s\+$//e
 " **************************************************************************** "
 syntax enable
 filetype on
-au BufNewFile,BufRead *.vl,*.vhd set filetype=verilog
-au BufNewFile,BufRead *.m set filetype=murphi " matlab files can also be .m, so careful
-au BufNewFile,BufRead SCons* set filetype=scons
-
 
 " **************************************************************************** "
 " Cursor line (highlights the current row/column)
@@ -130,19 +126,3 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Set the status line
 " set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
-
-" highlight Cursor guifg=blue guibg=black
-
-" **************************************************************************** "
-" clang format integration 
-" **************************************************************************** "
-map <C-k> :pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py<CR>
-imap <C-k> <ESC>:pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py<CR>i
-
-function ClangFormatFile()
-        let l:lines="all"
-        pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py
-endfunction
-
-map <C-l> :call ClangFormatFile()<CR>
-imap <C-l> <ESC>:call ClangFormatFile()<CR>i
