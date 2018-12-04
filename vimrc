@@ -3,6 +3,7 @@
 " **************************************************************************** "
 set nocompatible
 source /usr/share/vim/google/google.vim
+set term=xterm-256color
 
 " **************************************************************************** "
 " General options
@@ -41,7 +42,7 @@ hi SpellBad term=bold ctermbg=57 ctermfg=147
 " Keep cursor near the top of the screen
 " Use zz for center, zb for bottom
 " **************************************************************************** "
-" nnoremap j jzt                  
+" nnoremap j jzt
 " nnoremap k kzt
 
 
@@ -98,7 +99,7 @@ au BufNewFile,BufRead SCons* set filetype=scons
 " Cursor line (highlights the current row/column)
 " **************************************************************************** "
 set cursorline
-hi CursorLine ctermbg=240 cterm=none
+hi CursorLine ctermbg=236 cterm=none
 " set cursorcolumn
 " hi CursorColumn ctermbg=black cterm=none
 " hi CursorLine term=bold cterm=bold ctermbg=darkblue
@@ -114,7 +115,7 @@ hi CursorLine ctermbg=240 cterm=none
 :nmap <C-t> :tabnew<CR>
 
 " Remove highlighted search by hitting F3
-nnoremap <F3> :noh<CR>                
+nnoremap <F3> :noh<CR>
 " Toggle cursor to middle of screen and default behavior by hitting F5
 nnoremap <F5> :let &scrolloff=999-&scrolloff<CR>
 " Toggle line number by hitting ;;
@@ -133,7 +134,7 @@ execute pathogen#infect()
 " **************************************************************************** "
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-" The leader key is by default the \ key. So you can edit and reload vimrc by 
+" The leader key is by default the \ key. So you can edit and reload vimrc by
 " hitting \ev and \sv respectively
 " let mapleader=","
 
@@ -143,15 +144,15 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " highlight Cursor guifg=blue guibg=black
 
 " **************************************************************************** "
-" clang format integration 
+" clang format integration
 " **************************************************************************** "
-map <C-k> :pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py<CR>
-imap <C-k> <ESC>:pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py<CR>i
+noremap <C-k> :pyf /usr/lib/clang-format/clang-format.py<CR>
+inoremap <C-k> <C-o>:pyf /usr/lib/clang-format/clang-format.py<CR>
 
 function ClangFormatFile()
         let l:lines="all"
-        pyf /data/sanchez/tools/llvm-3.7.1/share/clang/clang-format.py
+        pyf /usr/lib/clang-format/clang-format.py
 endfunction
 
-map <C-l> :call ClangFormatFile()<CR>
-imap <C-l> <ESC>:call ClangFormatFile()<CR>i
+noremap <C-l> :call ClangFormatFile()<CR>
+inoremap <C-l> <ESC>:call ClangFormatFile()<CR>i
