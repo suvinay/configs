@@ -16,8 +16,7 @@ alias lt="ls -lrt"
 alias la="ls -a"
 alias rm="rm -i"
 alias xterm='xterm -fa default -fs 14'
-# alias tmux='tmux new-session'
-
+alias tmux='tmx2'
 alias open=xdg-open
 
 # Config files
