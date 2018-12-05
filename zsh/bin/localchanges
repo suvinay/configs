@@ -1,3 +1,8 @@
 #!/usr/bin/zsh
+# See help file: https://g3doc.corp.google.com/devtools/piper/g3doc/public/help/changes.md?cl=head for more options including filtering by username, by status. 
+# Note that g4 changes normally lists all CLs originating from any client. Here, we filter by the changes originating in current client.
+# (i.e. g4 changes is not normally sync-ed to the current client: https://yaqs.googleplex.com/eng/q/4834233716834304)
+# TODO Accept flags for g4 changes as flags to this script.
+# TODO Return if not currently in a CitC client.
 local client=$(p4 -F'%clientName%' info)
 g4 changes -t -l -c $client | sed '/PRESUBMIT\|R\|CC\|APPROVED\|REQUIRED_REVIEW\|DELTA\|OCL\|CLEANUP/d'

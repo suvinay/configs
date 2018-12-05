@@ -1,2 +1,9 @@
 #!/usr/bin/zsh
-p4 shortlog -t -l $1 | sed '/PRESUBMIT\|R\|CC\|APPROVED\|REQUIRED_REVIEW\|DELTA\|OCL\|CLEANUP/d' | sed -e "s/\(#[[:digit:]]\+ [[:digit:]]\+\)/$(tput setaf 3)\1$(tput sgr0)/"
+# Also see the help doc at: https://g3doc.corp.google.com/devtools/piper/g3doc/public/help/filelog.md?cl=head
+if [[ $# -eq 0 ]]; then
+    p4 shortlog -t -l `pwd`/... | sed '/PRESUBMIT\|R\|CC\|APPROVED\|REQUIRED_REVIEW\|DELTA\|OCL\|CLEANUP/d' | sed -e "s/\(#[[:digit:]]\+ [[:digit:]]\+\)/$(tput setaf 3)\1$(tput sgr0)/" | less
+elif [[ $1 =~ '\.' ]]; then
+    p4 shortlog -t -l `pwd`/... | sed '/PRESUBMIT\|R\|CC\|APPROVED\|REQUIRED_REVIEW\|DELTA\|OCL\|CLEANUP/d' | sed -e "s/\(#[[:digit:]]\+ [[:digit:]]\+\)/$(tput setaf 3)\1$(tput sgr0)/" | less
+else
+    p4 shortlog -t -l $1 | sed '/PRESUBMIT\|R\|CC\|APPROVED\|REQUIRED_REVIEW\|DELTA\|OCL\|CLEANUP/d' | sed -e "s/\(#[[:digit:]]\+ [[:digit:]]\+\)/$(tput setaf 3)\1$(tput sgr0)/" | less
+fi
