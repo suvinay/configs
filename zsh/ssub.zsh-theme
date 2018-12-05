@@ -5,7 +5,7 @@ google3_prompt_info() {
     if [[ $match[1] == $USER ]]; then
         print -r -- "%F{cyan}CitC:%B%F{red}($match[2])%b "
     else
-        print -r -- "%F{cyan}CitC($match[1]):%B%F{red}($match[2])%b "
+        print -r -- "%F{yellow}CitC($match[1]):%B%F{red}($match[2])%b "
     fi
   else
     print -r -- ""
