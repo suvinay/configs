@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+# Usage: <...stream...> | colorize
+# Examples:
+#   $ cat foo | colorize
+#   $ p4 shortlog -l //path/to/file.cc | sed '/PRESUBMIT\|R\|CC\|APPROVED\|REQUIRED_REVIEW\|DELTA\|OCL\|CLEANUP/d' | colorize
+#   $ echo 'hello world\nerror' | colorize
+awk '
+function color(c,s) {
+        printf("\033[%dm%s\033[0m\n",30+c,s)
+}
+/error/ {color(1,$0);next}
+/pending/ {color(1,$0);next}
+/success/ {color(2,$0);next}
+/warning/ {color(3,$0);next}
+/INFO/ {color(4,$0);next}
+/DBG/ {color(5,$0);next}
+/edit|add/ {color(3,$0);next}
+{print}'

@@ -1,0 +1,2 @@
+#!/usr/bin/zsh
+p4 shortlog -l $1 | sed '/PRESUBMIT\|R\|CC\|APPROVED\|REQUIRED_REVIEW\|DELTA\|OCL\|CLEANUP/d' | sed -e "s/\(#[[:digit:]]\+ [[:digit:]]\+\)/$(tput setaf 3)\1$(tput sgr0)/"

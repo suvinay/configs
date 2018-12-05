@@ -1,0 +1,3 @@
+#!/usr/bin/zsh
+local client=$(p4 -F'%clientName%' info)
+g4 changes -l -c $client | sed '/PRESUBMIT\|R\|CC\|APPROVED\|REQUIRED_REVIEW\|DELTA\|OCL\|CLEANUP/d'
