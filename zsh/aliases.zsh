@@ -45,3 +45,5 @@ compctl -W /google/src/cloud/${USER}/ -/ rmclient
 
 # G4/P4
 alias gdiff='P4DIFF=colordiff G4MULTIDIFF=0 g4 diff'
+alias glocal='localchanges | sed -e "s/\(Change [[:digit:]]\+\)/$(tput setaf 3)\1$(tput sgr0)/" | sed -e "s/\(Change [[:digit:]]\+\)\(.*\)\(pending\)/$(tput setaf 3)\1$(tput sgr0)\2$(tput setaf 1)\3$(tput sgr0)/"'
+alias glog='$HOME/bin/glog '
