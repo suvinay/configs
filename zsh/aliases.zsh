@@ -61,5 +61,5 @@ alias gshow='p4 change -o '
 # Bookmark-ed paths
 alias g3='cd google3'
 alias platforms='cd google3/platforms'
-alias perf='cd google3/platforms/performance'
+alias performance='cd google3/platforms/performance'
 
