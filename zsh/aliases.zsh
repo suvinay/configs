@@ -57,3 +57,9 @@ alias gdiff='P4DIFF=colordiff G4MULTIDIFF=0 g4 diff 2> /dev/null'
 alias glocal='localchanges | sed -e "s/\(Change [[:digit:]]\+\)/$(tput setaf 3)\1$(tput sgr0)/" | sed -e "s/\(Change [[:digit:]]\+\)\(.*\)\(pending\)/$(tput setaf 3)\1$(tput sgr0)\2$(tput setaf 1)\3$(tput sgr0)/"'
 alias glog='$HOME/bin/glog '
 alias gshow='p4 change -o '
+
+# Bookmark-ed paths
+alias g3='cd google3'
+alias platforms='cd google3/platforms'
+alias perf='cd google3/platforms/performance'
+
