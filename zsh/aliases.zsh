@@ -34,6 +34,7 @@ alias mad='ssh mad6.csail.mit.edu'
 alias myclients='p4 myclients; cd /google/src/cloud/${USER}/'
 alias lsclients='p4 myclients; ls /google/src/cloud/${USER}/'
 alias mkclient='g4d -f '
+alias renew='prodaccess; cd $PWD'
 
 # Tab completion on zsh is a breeze!
 cdclient() { cd /google/src/cloud/${USER}/$1; }
@@ -62,4 +63,4 @@ alias gshow='p4 change -o '
 alias g3='cd google3'
 alias platforms='cd google3/platforms'
 alias performance='cd google3/platforms/performance'
-
+alias experimental='cd /google/src/cloud/${USER}/experimental/google3/experimental/users/suvinay'
