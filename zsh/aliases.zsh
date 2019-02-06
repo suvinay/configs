@@ -34,7 +34,8 @@ alias mad='ssh mad6.csail.mit.edu'
 alias myclients='p4 myclients; cd /google/src/cloud/${USER}/'
 alias lsclients='p4 myclients; ls /google/src/cloud/${USER}/'
 alias mkclient='g4d -f '
-alias renew='prodaccess; cd $PWD'
+alias refresh='prodaccess; cd $PWD'
+alias renew='gcert; prodaccess; cd $PWD'
 
 # Tab completion on zsh is a breeze!
 cdclient() { cd /google/src/cloud/${USER}/$1; }
@@ -60,7 +61,8 @@ alias glog='$HOME/bin/glog '
 alias gshow='p4 change -o '
 
 # Bookmark-ed paths
-alias g3='cd google3'
-alias platforms='cd google3/platforms'
-alias performance='cd google3/platforms/performance'
+alias g3='cd $(p4 -F'%clientRoot%' info)/google3'
+alias platforms='cd $(p4 -F'%clientRoot%' info)/google3/platforms'
+alias performance='cd $(p4 -F'%clientRoot%' info)/google3/platforms/performance'
 alias experimental='cd /google/src/cloud/${USER}/experimental/google3/experimental/users/suvinay'
+alias sparsecore='cd $(p4 -F'%clientRoot%' info)/google3/platforms/performance/deepsea/sparse_core'
