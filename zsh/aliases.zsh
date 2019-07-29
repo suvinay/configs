@@ -18,6 +18,8 @@ alias rm="rm -i"
 alias xterm='xterm -fa default -fs 14'
 alias tmux='tmx2'
 alias open=xdg-open
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 
 # Config files
 alias zshrc='$EDITOR ~/.zshrc'
